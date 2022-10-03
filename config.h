@@ -68,10 +68,10 @@ static const struct arg args[] = {
 	{ datetime, " 📅 %s",           "%a, %d %b, %Y | " },
 	{ ram_perc, "🧠 RAM %s%% | ", 	NULL },
 	/* { cpu_perc, "🖥️ CPU %s%% | ", NULL }, */
-	{ datetime, "%s",           	"⏰ %I:%M %p | " },
+	{ datetime, "%s",           	"⏰ %I:%M %p " },
 	/* { wifi_perc, "WIFI %s%% ", 	"wl2ps0" }, */
 	/* { wifi_essid, "(%s) ", 		"wlp2s0" }, */
  	/* { run_command, "🔊%4s",	"pamixer --get-volume | awk -F\"[][]\" '/%/ { print $2 }' | head -n1"} */
- 	{ run_command, "🔊%4s%% ",		"pamixer --get-volume | awk {print}"}
+ 	/* { run_command, "🔊%4s%% ",		"pamixer --get-volume | awk {print}"} */
 	/* { run_command, "%s", 		"echo % " } */
 };
