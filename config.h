@@ -1,6 +1,4 @@
-/* See LICENSE file for copyright and license details. */
-
-/* interval between updates (in ms) */
+/* See LICENSE file for copyright and license details. */ /* interval between updates (in ms) */
 const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
@@ -27,14 +25,10 @@ static const char unknown_str[] = "n/a";
  * disk_used           used disk space in GB           mountpoint path (/)
  * entropy             available entropy               NULL
  * gid                 GID of current user             NULL
- * hostname            hostname                        NULL
- * ipv4                IPv4 address                    interface name (eth0)
- * ipv6                IPv6 address                    interface name (eth0)
- * kernel_release      `uname -r`                      NULL
+ * hostname            hostname                        NULL * ipv4                IPv4 address                    interface name (eth0) * ipv6                IPv6 address                    interface name (eth0) * kernel_release      `uname -r`                      NULL
  * keyboard_indicators caps/num lock indicators        format string (c?n?)
  *                                                     see keyboard_indicators.c
- * keymap              layout (variant) of current     NULL
- *                     keymap
+ * keymap              layout (variant) of current     NULL *                     keymap
  * load_avg            load average                    NULL
  * netspeed_rx         receive network speed           interface name (wlan0)
  * netspeed_tx         transfer network speed          interface name (wlan0)
@@ -66,9 +60,11 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function format          argument */
 	{ datetime, " 📅 %s",           "%a, %d %b, %Y | " },
-	{ ram_perc, "🧠 RAM %s%% | ", 	NULL },
- 	{ run_command, "🔊 %s%% | ",	"pamixer --get-volume"},
-	/* { cpu_perc, "🖥️ CPU %s%% | ", NULL }, */
+	{ ram_perc, "🧠 %s%% | ", 	NULL },
+  { run_command, "💻 %s | ", "sensors | rg Package | frawk '{print $4}' | sed -e '1s/^.//'"}, 
+  { run_command, "🚀 %s°C |", "nvidia-smi | rg Default | frawk '{print $3}' | sed 's/.$//'"},
+  /* { run_command, "%s | ", "nvidia-smi | rg Default | frawk '{print $13}'"}, */
+  { run_command, "🔊 %s%% | ",	"pamixer --get-volume"},
 	{ datetime, "%s",           	"⏰ %I:%M %p" },
 	/* { wifi_perc, "WIFI %s%% ", 	"wl2ps0" }, */
 	/* { wifi_essid, "(%s) ", 		"wlp2s0" }, */
