@@ -61,8 +61,8 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ datetime, " 📅 %s",           "%a, %d %b, %Y | " },
 	{ ram_perc, "🧠 %s%% | ", 	NULL },
-  { run_command, "💻 %s | ", "sensors | rg Package | frawk '{print $4}' | sed -e '1s/^.//; s/.//4; s/.//3'"},
-  { run_command, "🚀 %s°C | ", "nvidia-smi | rg Default | frawk '{print $3}' | sed 's/.$//'"},
+  { run_command, "💻 %s | ", "sensors | rg Package | frawk '{print $4}' | sed -e '1s/^.//; s/.//4; s/.//3; s/C//g'"},
+  { run_command, "🚀 %s° | ", "nvidia-smi | rg Default | frawk '{print $3}' | sed 's/.$//'"},
   /* { run_command, "%s | ", "nvidia-smi | rg Default | frawk '{print $13}'"}, */
   { run_command, "🔊 %s%% | ",	"pamixer --get-volume"},
 	{ datetime, "%s",           	"⏰ %I:%M %p" },
