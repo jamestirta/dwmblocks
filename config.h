@@ -59,12 +59,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, " 📅 %s",           "%a, %d %b, %Y | " },
-	{ ram_perc, "🧠 %s%% | ", 	NULL },
-  { run_command, "💻 %s | ", "sensors | rg Package | frawk '{print $4}' | sed -e '1s/^.//; s/.//4; s/.//3; s/C//g'"},
-  { run_command, "🚀 %s° | ", "nvidia-smi | rg Default | frawk '{print $3}' | sed 's/.$//'"},
-  /* { run_command, "%s | ", "nvidia-smi | rg Default | frawk '{print $13}'"}, */
-  { run_command, "🔊 %s%% | ",	"pamixer --get-volume"},
+	{ datetime, " 📅 %s","%a, %d %b, %Y | " },
+	{ ram_perc, "🧠 %s%% | ",NULL },
+  { run_command, "💻 %s° | ","sensors -u | sed -n '183p' | sed -E 's|  temp1_input: ||g' | cut -c1-2,9-"},
+  { run_command, "🚀 %s° | ","nvidia-smi -q -d temperature | sed -n '11p' | sed 's/ \C//g; s/ //g' | tail -c 3"},
+  { run_command, "🔊 %s | ","pamixer --get-volume"},
 	{ datetime, "%s",           	"⏰ %I:%M %p" },
 	/* { wifi_perc, "WIFI %s%% ", 	"wl2ps0" }, */
 	/* { wifi_essid, "(%s) ", 		"wlp2s0" }, */
