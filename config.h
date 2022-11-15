@@ -59,12 +59,12 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command, "%s", "[ -z $( pgrep 'obs-ffmpeg-mux' ) ] && echo ' ' || echo ' 🔴 | ' "},
-  { datetime, " 📅 %s","%a, %d %b, %Y | " },
+	{ run_command, "%s", "[ -z $( pgrep 'obs-ffmpeg-mux' ) ] && echo ' ' || echo ' 🔴 | '"},
+  { datetime, "📅 %s","%a, %d %b, %Y | " },
 	{ ram_perc, "🧠 %s%% | ",NULL },
   /* { run_command, "💻 %s° | ","sensors -u | sed -n '9p' | sed -E 's|  temp1_input: ||g' | cut -c1-2,9-"}, */
   { temp, "💻 %s° | ", "/sys/class/thermal/thermal_zone1/temp"},
-  { run_command, "🚀 %s° | ","nvidia-smi -q -d temperature | sed -n '11p' | sed 's/ \C//g; s/ //g' | tail -c 3"},
+  { run_command, "🚀 %s° | ","nvidia-smi -q -d temperature | rg 'GPU C' | frawk '{print $5}'"},
   { run_command, "🔊 %s | ","pamixer --get-volume"},
 	{ datetime, "%s","⏰ %I:%M %p" },
 	/* { wifi_perc, "WIFI %s%% ", 	"wl2ps0" }, */
